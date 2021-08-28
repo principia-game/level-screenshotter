@@ -2,6 +2,7 @@ import screenshotter
 import os
 import urllib3
 import json
+import time
 from config import *
 from ftplib import FTP
 from pathlib import Path
@@ -11,8 +12,10 @@ def main():
 	data = json.loads(http.request('GET','%s/internal/levels_with_no_thumbs.php' % DOMAIN).data)
 
 	os.system("principia &")
-	print("vänta")
-	input()
+	print("läumching principaa")
+	#print("vänta")
+	#input()
+	time.sleep(6)
 
 	print("ok")
 
