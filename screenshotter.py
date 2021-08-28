@@ -14,6 +14,8 @@ def main(input_file, namespace = 'db'):
 		(MONITOR_HEIGHT - PRINCIPIA_HEIGHT) / 2 + PRINCIPIA_HEIGHT))
 	image.save("thumbs/%s.%s" % (input_file, IMAGEFORMAT))
 
+	os.system("convert thumbs/%s.%s -resize 240 -unsharp 0x0.55+0.55+0.008 -quality 90 thumbs/%s.low.%s" % (input_file, IMAGEFORMAT, input_file, IMAGEFORMAT))
+
 if __name__ == "__main__":
 	if len(sys.argv) < 2:
 		print("gimmie a level id uwu")

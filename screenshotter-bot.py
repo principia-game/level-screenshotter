@@ -27,6 +27,11 @@ def main():
 			with open("thumbs/%s.jpg" % level, 'rb') as fil:
 				ftp.storbinary('STOR %s.jpg' % level, fil)
 
+		ftp.cwd(FTP_THUMBDIR+"low/")
+		for level in data['levels_with_no_thumbs']:
+			with open("thumbs/%s.low.jpg" % level, 'rb') as fil:
+				ftp.storbinary('STOR %s.jpg' % level, fil)
+
 
 if __name__ == "__main__":
 	main()
