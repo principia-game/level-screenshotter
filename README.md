@@ -18,10 +18,8 @@ PRINCIPIA_HEIGHT = 720
 
 IMAGEFORMAT = "jpg"
 
-FTP_SERVER   = "[ftp server]"
-FTP_USERNAME = "[username]"
-FTP_PASSWORD = "[password]"
-FTP_THUMBDIR = "/srv/http/principia-web/levels/thumbs/"
+SERVER_SSH = "rollerozxa@principia-web.uwu"
+SERVER_DIR = "/srv/http/principia-web"
 ```
 Paste the code into a file called `config.py`.
 

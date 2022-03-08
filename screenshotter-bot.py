@@ -4,8 +4,6 @@ import urllib3
 import json
 import time
 from config import *
-from ftplib import FTP
-from pathlib import Path
 
 def main():
 	http = urllib3.PoolManager()
@@ -23,18 +21,8 @@ def main():
 		print("doing "+str(level))
 		screenshotter.main(level)
 
-	with FTP(FTP_SERVER, FTP_USERNAME, FTP_PASSWORD) as ftp:
-		ftp.set_pasv(False)
-		ftp.cwd(FTP_THUMBDIR)
-		for level in data['levels_with_no_thumbs']:
-			with open("thumbs/%s.jpg" % level, 'rb') as fil:
-				ftp.storbinary('STOR %s.jpg' % level, fil)
-
-		ftp.cwd(FTP_THUMBDIR+"low/")
-		for level in data['levels_with_no_thumbs']:
-			with open("thumbs/%s.low.jpg" % level, 'rb') as fil:
-				ftp.storbinary('STOR %s.jpg' % level, fil)
-
+	os.system("scp thumbs/%s.jpg %s:%s/levels/thumbs/" % (level, SERVER_SSH, SERVER_DIR))
+	os.system("scp thumbs/low/%s.jpg %s:%s/levels/thumbs/low/" % (level, SERVER_SSH, SERVER_DIR))
 
 if __name__ == "__main__":
 	main()
