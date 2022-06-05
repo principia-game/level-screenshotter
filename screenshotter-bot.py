@@ -21,8 +21,7 @@ def main():
 		print("doing "+str(level))
 		screenshotter.main(level)
 
-	os.system("scp thumbs/%s.jpg %s:%s/levels/thumbs/" % (level, SERVER_SSH, SERVER_DIR))
-	os.system("scp thumbs/low/%s.jpg %s:%s/levels/thumbs/low/" % (level, SERVER_SSH, SERVER_DIR))
+	os.system("rsync -azP thumbs/* %s:%s/levels/thumbs/" % (SERVER_SSH, SERVER_DIR))
 
 if __name__ == "__main__":
 	main()
