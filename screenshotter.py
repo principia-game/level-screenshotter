@@ -8,13 +8,14 @@ from pathlib import Path
 def main(input_file, namespace = 'db'):
 	Path("thumbs/low/").mkdir(parents=True, exist_ok=True)
 	
-	os.system("principia principia://play/lvl/%s/%s &" % (namespace, input_file))
+	os.system("principia principia://principia-web.se/play/lvl/%s/%s &" % (namespace, input_file))
 	time.sleep(2)
 	image = ImageGrab.grab(bbox=(
 		(MONITOR_WIDTH - PRINCIPIA_WIDTH) / 2,
-		(MONITOR_HEIGHT - PRINCIPIA_HEIGHT) / 2,
+		((MONITOR_HEIGHT - PRINCIPIA_HEIGHT) / 2)+29,
 		(MONITOR_WIDTH - PRINCIPIA_WIDTH) / 2 + PRINCIPIA_WIDTH,
-		(MONITOR_HEIGHT - PRINCIPIA_HEIGHT) / 2 + PRINCIPIA_HEIGHT))
+		((MONITOR_HEIGHT - PRINCIPIA_HEIGHT) / 2 + PRINCIPIA_HEIGHT)+29
+	))
 	image.save("thumbs/%s.%s" % (input_file, IMAGEFORMAT))
 
 	os.system("convert thumbs/%s.%s -resize 240 -unsharp 0x0.55+0.55+0.008 -quality 90 thumbs/low/%s.%s" % (input_file, IMAGEFORMAT, input_file, IMAGEFORMAT))
