@@ -4,7 +4,5 @@ screenshots/
 thumbs/
 thumbs_low/
 
-image.jpg
-image.png
-
 config.py
+.p/
